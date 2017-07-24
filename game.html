@@ -17,10 +17,9 @@ var ballX = 50;
 window.onload = function (){
 	canvas = document.getElementById('gameCanvas');
 	canvasContext = canvas.getContext('2d');
-	setInterval(drawEverything, 100); //This refreshes the drawEverything function every x amount of milliseconds)
-	drawEverything();
-	drawEverything();
-	drawEverything();
+
+	var framesPerSecond = 30;
+	setInterval(drawEverything, 1000/framesPerSecond); //This refreshes the drawEverything function every x amount of milliseconds)
 }
 	
 
