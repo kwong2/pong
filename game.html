@@ -13,7 +13,7 @@ Kevin Wong is here to do something!
 var canvas;
 var canvasContext;
 var ballX = 50;
-var ballSpeedX = 5;
+var ballSpeedX = 15;
 
 window.onload = function (){
 	canvas = document.getElementById('gameCanvas');
@@ -29,8 +29,10 @@ window.onload = function (){
 
 	
 function moveEverything() {
-	ballX += ballSpeedX;
-	ballSpeedX += 1;
+	ballX += ballSpeedX
+	if(ballX > 800) {
+		ballSpeedX = -5;
+	}
 }
 
 function drawEverything() {
