@@ -7,12 +7,13 @@
 <body>
 Kevin Wong is here to do something!
 <canvas id ="gameCanvas" width="800" height="600"></canvas>
-</body>
+
 
 <script type="text/javascript">
 var canvas;
 var canvasContext;
 var ballX = 50;
+var ballSpeedX = 5;
 
 window.onload = function (){
 	canvas = document.getElementById('gameCanvas');
@@ -28,7 +29,8 @@ window.onload = function (){
 
 	
 function moveEverything() {
-	ballX += 5;
+	ballX += ballSpeedX;
+	ballSpeedX += 1;
 }
 
 function drawEverything() {
@@ -41,5 +43,5 @@ function drawEverything() {
 }	
 
 </script>
-
+</body>
 </html>
