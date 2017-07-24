@@ -19,13 +19,13 @@ window.onload = function (){
 	canvasContext = canvas.getContext('2d');
 
 	var framesPerSecond = 30;
-	setInterval(drawEverything, 1000/framesPerSecond); //This refreshes the drawEverything function every x amount of milliseconds)
+	setInterval(function() { //inline function has no name
+		moveEverything();
+		drawEverything();
+	}, 1000/framesPerSecond); //This refreshes the drawEverything function every x amount of milliseconds)
 }
 
-function callBoth(){
-	moveEverything();
-	drawEverything();
-}
+
 	
 function moveEverything() {
 	ballX += 5;
