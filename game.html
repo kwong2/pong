@@ -5,7 +5,6 @@
   <title></title>
 </head>
 <body>
-Kevin Wong is here to do something!
 <canvas id ="gameCanvas" width="800" height="600"></canvas>
 
 
@@ -25,13 +24,14 @@ window.onload = function (){
 		drawEverything();
 	}, 1000/framesPerSecond); //This refreshes the drawEverything function every x amount of milliseconds)
 }
-
-
 	
 function moveEverything() {
 	ballX += ballSpeedX
-	if(ballX > 800) {
-		ballSpeedX = -5;
+	if(ballX < 0) {
+		ballSpeedX = -ballSpeedX;
+	}
+	if(ballX > canvas.width) {
+		ballSpeedX = -ballSpeedX;
 	}
 }
 
