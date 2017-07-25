@@ -33,6 +33,14 @@ function calculateMousePos(evt) {
 	};
 }
 
+function handleMouseClick(evt) {
+	if(showingWinScreen) {
+		player1Score = 0;
+		player2Score = 0;
+		showingWinScreen = false;
+	}
+}
+
 window.onload = function (){
 	canvas = document.getElementById('gameCanvas');
 	canvasContext = canvas.getContext('2d');
@@ -42,6 +50,8 @@ window.onload = function (){
 		moveEverything();
 		drawEverything();
 	}, 1000/framesPerSecond); //This refreshes the drawEverything function every x amount of milliseconds)
+	
+	canvas.addEventListener('mousedown', handleMouseClick);
 	canvas.addEventListener('mousemove',
 		function(evt){
 			var mousePos = calculateMousePos(evt);
@@ -50,15 +60,16 @@ window.onload = function (){
 }
 
 function ballReset() {
-	if (player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE) {
-		player1Score = 0;
-		player2Score = 0;
+	if (player1Score >= WINNING_SCORE || 
+		player2Score >= WINNING_SCORE) {
+		// player1Score = 0;
+		// player2Score = 0;
 		showingWinScreen = true;
 	}
+	ballSpeedX = -ballSpeedX;
 	ballX = canvas.width/2;
 	ballY = canvas.height/2;
-	ballSpeedX = -ballSpeedX;
-	showingWinScreen = true;
+	// showingWinScreen = true;
 }
 
 function computerMovement(){
@@ -74,7 +85,9 @@ function moveEverything() {
 	if (showingWinScreen){
 		return;
 	}
+
 	computerMovement();
+
 	ballX += ballSpeedX;
 	ballY += ballSpeedY;
 
@@ -110,15 +123,31 @@ function moveEverything() {
 	}
 }
 
+function drawNet(){
+	for(var i=0; i<canvas.height; i+=40){
+		colorRect(canvas.width/2-1,i,2,20,'white');
+	}
+}
+
 function drawEverything() {
 	//next line add black canvas
-	colorRect(0,0,canvas.width,canvas.height, 'black');
+	colorRect(0,0,canvas.width,canvas.height,'black');
 
 	if(showingWinScreen) {
-		canvasContext.fillStyle = 'white'
-		canvasContext.fillText("click to continue", 100, 100);
+		canvasContext.fillStyle = 'white';
+		if (player1Score >= WINNING_SCORE) {
+			canvasContext.fillText("Left Player Won!",350,200);
+		} else if(player2Score >= WINNING_SCORE) {
+			canvasContext.fillText("Right Player Won!",350,200);
+		}
+		// player1Score = 0;
+		// player2Score = 0;
+		// showingWinScreen = true;
+		canvasContext.fillText("click to continue", 350, 500);
 		return;
 	}
+
+	drawNet();
 	//left white paddle
 	colorRect(0,paddle1Y,PADDLE_THICKNESS,PADDLE_HEIGHT,'white');
 	//right white paddle
