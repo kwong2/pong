@@ -1,6 +1,16 @@
 
-This clock was made by following along the 30 Days of JavaScript course using HTML, CSS, and obviously, JavaScript. 
+This was made by following Chris DeLeon's Code Your First Game: Arcade Classic in JavaScript on Canvas on Udemy.
+
+Link to course:
+```
+https://www.udemy.com/code-your-first-game/learn/v4/overview
+```
 
 It can be viewed here:
-https://kwong2.github.io/Clock/
+```
+https://kwong2.github.io/pong/
+```
 
+You control the left paddle with your mouse.
+
+ENJOY!
